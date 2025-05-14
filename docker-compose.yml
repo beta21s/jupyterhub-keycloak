@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  jupyterhub:
+    build: .
+    image: truongtpa-jupyterhub
+    container_name: jupyterhub
+    restart: always
+    ports:
+      - "7000:8000"
+    volumes:
+      - ./jupyterhub_config.py:/srv/jupyterhub/jupyterhub_config.py
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - KEYCLOAK_CLIENT_ID=vlute.edu.vn
+      - KEYCLOAK_CLIENT_SECRET=
+      - KEYCLOAK_BASE_URL=https://sso.vlute.edu.vn/auth/
+      - KEYCLOAK_REALM=Dev
+      - KEYCLOAK_REDIRECT_URI=http://172.20.42.24:7000/hub/oauth_callback
+    networks:
+      - jupyterhub_net
+
+  notebook:
+    image: jupyter/base-notebook:latest
+    container_name: notebook-base
+    restart: always
+    networks:
+      - jupyterhub_net
+
+volumes:
+  jupyterhub_data:
+
+networks:
+  jupyterhub_net:
+    external: true
