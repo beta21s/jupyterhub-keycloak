@@ -6,7 +6,7 @@ c.JupyterHub.spawner_class = DockerSpawner
 c.DockerSpawner.debug = True
 
 c.DockerSpawner.image = 'jupyter/base-notebook:latest'
-c.DockerSpawner.remove = True
+c.DockerSpawner.remove = False
 c.DockerSpawner.name_template = 'jupyterhub-{username}'
 c.DockerSpawner.volumes = { 'jupyterhub-user-{username}': '/home/jovyan/work' }
 
