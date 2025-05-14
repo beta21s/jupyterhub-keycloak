@@ -23,10 +23,10 @@ c.GenericOAuthenticator.authorize_url = f"{KEYCLOAK_BASE}realms/{REALM}/protocol
 c.GenericOAuthenticator.token_url = f"{KEYCLOAK_BASE}realms/{REALM}/protocol/openid-connect/token"
 c.GenericOAuthenticator.userdata_url = f"{KEYCLOAK_BASE}realms/{REALM}/protocol/openid-connect/userinfo"
 c.GenericOAuthenticator.userdata_method = 'GET'
-c.GenericOAuthenticator.username_key = 'preferred_username'
+c.GenericOAuthenticator.username_key = 'email'
 
 # Admins
-c.Authenticator.admin_users = {'truongtpa'}
+c.Authenticator.admin_users = {'truongtpa@vlute.edu.vn'}
 
 # JupyterLab giao diện
 c.Spawner.default_url = '/lab'
